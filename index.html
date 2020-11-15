@@ -10,8 +10,8 @@
 			background-color: rgb(100, 12, 182);
             margin-top: 100px;
             padding-bottom: 10px;
-			margin-right: 1000px;
-			
+			margin-right: 40%;
+			margin-left: 35%;
 		}
 		.tableJogoVelha
 		{
@@ -40,7 +40,11 @@
 			<h1 align="center">Jogo da Velha</h1>
 			<hr width="40%" align="center" >
 			<br>
+			<div id="jogada">
+
+			</div>
 		</div>
+		
 		<!--Usuario: é o xxx
 		Computador: é a O -->
 
@@ -65,6 +69,7 @@
 				<td class="celula" id="linha3Coluna3" onclick="adicionarXAqui('linha3Coluna3', 9)"></td>
 			</tr>
 		</table>
+
 	</div>
 	
 </body>
@@ -85,17 +90,18 @@
 			"linha3Coluna2", // index 8
 			"linha3Coluna3", // index 9
 		]
-		
+		var x = "Vez do jogador X"
+		var o = "Vez de jogador O"
+		document.getElementById('jogada').innerHTML = x
 
 		function adicionarXAqui(idCelula, quadrante)
 		{	
 			if(quadrantesMarcados.indexOf(quadrante) == -1 )
 			{
 				preencheVelha(idCelula, "x", quadrante)
-			 	(efetuarJogadaDaMaquina());			
-			}			
-			
-			
+				document.getElementById('jogada').innerHTML = o
+			 	efetuarJogadaDaMaquina();			
+			}
 		}
 
 		function efetuarJogadaDaMaquina(){
@@ -105,7 +111,7 @@
 				-> se foi marcado, gera um novo quadrante ->  Math.floor(Math.random() * 10)
 				-> se nao foi marcado, marca marca-lo
 			*/
-			
+
 			var quadranteMaquina = Math.floor(Math.random() * 10);
 
 			if(quadrantesMarcados.indexOf(quadranteMaquina) == -1 )
@@ -134,7 +140,9 @@
 			var elemento = document.getElementById(idQuadrante);
 			if(tipo == "x")
 			{
+				
 				elemento.innerHTML = "<i class='fas fa-times'></i>";
+				
 			}
 			else
 			{
@@ -142,14 +150,10 @@
 					elemento.innerHTML = "<i class='far fa-circle'></i>";
 				}, 2000)
 			}
-			quadrantesMarcados.push(valorQuadrante); //adiciona elementos a um array	
+			quadrantesMarcados.push(valorQuadrante); //adiciona elementos a um array
+			document.getElementById('jogada').innerHTML = x
 		}
-
-		// let myGreeting = setTimeout(function() {
-  		// 	alert('Hello, Mr. Universe!');
-		// }, 2000)
-	
-		//comentario
+		
 
 	</script>
 </html>
